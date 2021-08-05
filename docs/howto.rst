@@ -13,7 +13,7 @@ To build and serve docs, use the commands::
 
 
 
-Changes to files in `docs/_source` will be picked up and reloaded automatically.
+Changes to files in `docs/` will be picked up and reloaded automatically.
 
 `Sphinx <https://www.sphinx-doc.org/>`_ is the tool used to build documentation.
 

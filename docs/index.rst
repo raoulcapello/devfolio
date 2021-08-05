@@ -11,7 +11,6 @@ Welcome to DevFolio's documentation!
    :caption: Contents:
 
    howto
-   pycharm/configuration
    users
 
 
