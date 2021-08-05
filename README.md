@@ -1,2 +1,0 @@
-# devfolio
-My Developer Portfolio
