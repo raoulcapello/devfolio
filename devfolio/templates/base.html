@@ -27,24 +27,29 @@
     <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
     <!-- DevFolio Stylesheet -->
     <link rel="stylesheet" media="screen" href="{% static 'css/devfolio.css' %}">
+    {% comment %}
+    <link rel="stylesheet" media="screen" href="{% static 'css/page-load-spinner.css' %}"> {% endcomment %}
     {% endblock %}
     <!-- Le javascript
     ================================================== -->
     {# Placed at the top of the document so pages load faster with defer #}
     {% block javascript %}
     <script defer src="{% static 'js/devfolio.js' %}"></script>
+    {% comment %} <script defer src="{% static 'js/page-load-spinner.js' %}"></script> {% endcomment %}
     {% endblock javascript %}
 
 </head>
 
 <body>
 
+    {% comment %}
     <!-- Page loading spinner-->
     <div class="page-loading active">
         <div class="page-loading-inner">
             <div class="page-spinner"></div><span>Loading...</span>
         </div>
     </div>
+    {% endcomment %}
 
     <main class="page-wrapper d-flex flex-column">
 
@@ -55,7 +60,7 @@
         {% include 'partials/_messages.html' %}
 
         <!-- Page content-->
-        <div class="container d-flex flex-column justify-content-center pt-5 mt-n6" style="flex: 1 0 auto;">
+        <div class="container d-flex flex-column pt-5 mt-n6" style="flex: 1 0 auto;">
             {% block content %}This is not the content you're looking for.{% endblock content %}
         </div> <!-- /.container -->
 
