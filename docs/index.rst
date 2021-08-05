@@ -12,6 +12,8 @@ Welcome to DevFolio's documentation!
 
    howto
    users
+   env_vars
+   todo
 
 
 
