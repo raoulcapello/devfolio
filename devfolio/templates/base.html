@@ -1,106 +1,97 @@
-{% load static i18n %}<!DOCTYPE html>
+{% load static i18n %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}DevFolio{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devfolio | {% block title %} A Portfolio Manager for Web Developers & Designers {% endblock title %}</title>
+    <!-- SEO Meta Tags-->
     <meta name="description" content="An Online Portfolio Management System for Web Developers and Designers.">
+    <meta name="keywords" content="portfolio content management web developer designer">
     <meta name="author" content="Raoul Capello">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+    <link rel="icon" href="{% static 'img/favicons/favicon.ico' %}">
 
     {% block css %}
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Your stuff: Third-party CSS libraries go here -->
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="{% static 'css/simplebar.min.css' %}" />
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
     {% endblock %}
     <!-- Le javascript
     ================================================== -->
     {# Placed at the top of the document so pages load faster with defer #}
     {% block javascript %}
-      <!-- Bootstrap JS and its dependencies-->
-      <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
-
-      <!-- place project specific Javascript in this file -->
-      <script defer src="{% static 'js/project.js' %}"></script>
-
+    <script defer src="{% static 'js/devfolio.js' %}"></script>
     {% endblock javascript %}
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'home' %}">DevFolio</a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
-            </li>
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-              </li>
-            {% endif %}
-          </ul>
+    {# Disabled for now #}
+    {% comment %}
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div><span>Loading...</span>
         </div>
-      </nav>
-
     </div>
+    {% endcomment %}
 
-    <div class="container">
+    <main class="page-wrapper d-flex flex-column">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
+        {% include 'partials/_signin_modal.html' %}
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+        {% include 'partials/_navbar_top.html' %}
 
-    </div> <!-- /container -->
+        {% include 'partials/_messages.html' %}
+
+        <!-- Page content-->
+        <div class="container d-flex flex-column justify-content-center pt-5 mt-n6" style="flex: 1 0 auto;">
+            {% block content %}This is not the content you're looking for.{% endblock content %}
+        </div> <!-- /.container -->
+
+    </main>
+
+    <!-- Footer-->
+    <footer class="footer py-4">
+        <div class="container d-md-flex align-items-center justify-content-between py-2 text-center text-md-end">
+            <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Support</a></li>
+                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Contacts</a></li>
+                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Terms &amp; Conditions</a></li>
+            </ul>
+            <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">© All rights reserved. Made by</span><a class="nav-link-style fw-normal" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to top button-->
+    <a class="btn-scroll-top" href="#top" data-scroll data-fixed-element>
+        <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+        <i class="btn-scroll-top-icon ai-arrow-up"></i>
+    </a>
 
     {% block modal %}{% endblock modal %}
+
+    <!-- Vendor scripts: JS libraries and plugins-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/simplebar.min.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.polyfills.min.j' %}s"></script>
+    <!-- Main theme script-->
+    <script src="{% static 'js/theme.min.js' %}"></script>
 
     {% block inline_javascript %}
     {# Script tags with only code, no src (defer by default) #}
     {% endblock inline_javascript %}
-  </body>
+</body>
+
 </html>
