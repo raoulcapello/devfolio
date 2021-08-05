@@ -47,5 +47,20 @@
   // https://www.python.org/dev/peps/pep-0008/#id19
   "[python]": {
     "editor.rulers": [72, 80, 120]
-  }
+  },
+  "cSpell.words": [
+    "automodule",
+    "devfolio",
+    "genindex",
+    "hasher",
+    "howto",
+    "maxdepth",
+    "modindex",
+    "noindex",
+    "password",
+    "pbkdf",
+    "quickstart",
+    "toctree"
+  ],
+  "restructuredtext.confPath": "${workspaceFolder}/docs"
 }
