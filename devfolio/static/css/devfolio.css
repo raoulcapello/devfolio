@@ -12,3 +12,9 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+/* Main Dropdown Menu  */
+
+.navbar-expand-lg .dropdown-mega .dropdown-column {
+  padding: 3rem 0.75rem;
+}
