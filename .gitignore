@@ -45,6 +45,8 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+# Ignore my testing sandbox playstuff
+test_ex*
 
 # Translations
 *.mo
