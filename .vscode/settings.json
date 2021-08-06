@@ -59,6 +59,7 @@
     "noindex",
     "password",
     "pbkdf",
+    "pytest",
     "quickstart",
     "toctree"
   ],
