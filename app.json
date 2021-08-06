@@ -1,7 +1,4 @@
 {
-    "buildpacks": [
-        { "url": "heroku/python" }
-      ],
     "environments": {
       "test": {
         "scripts": {
@@ -11,7 +8,7 @@
             "heroku-postgresql:in-dyno", 
             "heroku-redis:in-dyno",
             "heroku-mailgun:in-dyno"
-        ],
+        ]
       }
     }
   }
