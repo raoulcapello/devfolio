@@ -1,5 +1,15 @@
 name: Django CI
 
+env:
+  POSTGRES_HOST: ${POSTGRES_HOST}
+  POSTGRES_PORT: ${POSTGRES_PORT}
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+#   DOCKER_BUILDKIT: 1
+#   COMPOSE_DOCKER_CLI_BUILD: 1
+
 on:
   push:
     branches: [ main ]
@@ -16,16 +26,13 @@ jobs:
         python-version: [3.9]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Docker Compose Action
-      # You may pin to the exact commit or the version.
-      # uses: isbang/compose-action@fab6f72bef82b75de541a7b9da1d23412953c2bd
-      uses: isbang/compose-action@v1.0.0
-      with:
-        # relative path to compose file
-        compose-file: ./test.yml # optional, default is ./docker-compose.yml
-        # additional options to pass to `docker-compose down` command
-        # down-flags: # optional, default is 
-    - name: Run Tests
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+        
+    - name: Docker Compose - Build
       run: |
-        docker-compose run --rm django pytest
+        docker-compose -f test.yml up -d --build
+        
+    - name: Docker Compose - Test (with pytest)
+      run: |
+        docker-compose -f test.yml run --rm django pytest
