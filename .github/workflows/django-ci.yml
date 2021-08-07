@@ -47,6 +47,9 @@ jobs:
       # Not working:
       # docker-compose -f test.yml exec -T django pytest
       # ValueError: Port could not be cast to integer value as '${POSTGRES_PORT}'
+      #
+      # Possibru relevant:
+      # https://github.com/pydanny/cookiecutter-django/issues/2848
       run: |
         docker-compose -f test.yml run --rm django pytest
 
