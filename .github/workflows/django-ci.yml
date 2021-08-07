@@ -34,6 +34,12 @@ jobs:
         docker-compose -f test.yml up -d --build
         
     - name: Docker Compose - Test
+      # Not working:
+      # docker-compose -f test.yml exec -T django pytest
+      # ValueError: Port could not be cast to integer value as '${POSTGRES_PORT}'
       run: |
-        docker-compose -f test.yml exec -T django pytest
+        docker-compose -f test.yml run --rm django pytest
+
+        
+
 
