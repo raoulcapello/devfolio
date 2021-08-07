@@ -1,6 +1,10 @@
 name: Django CI
 
 env:
+  POSTGRES_HOST: ${POSTGRES_HOST}
+  POSTGRES_PORT: ${POSTGRES_PORT}
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_USER: ${POSTGRES_USER}
   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 #   DOCKER_BUILDKIT: 1
 #   COMPOSE_DOCKER_CLI_BUILD: 1
@@ -36,4 +40,4 @@ jobs:
         
     - name: Run Tests
       run: |
-        docker-compose -f test.yml run --rm -e POSTGRES_USER=${POSTGRES_USER} django pytest
+        docker-compose -f test.yml run --rm django pytest
