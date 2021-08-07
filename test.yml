@@ -24,6 +24,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - DATABASE_URL
+      - USE_DOCKER
     ports:
       - "8000:8000"
     command: /start
