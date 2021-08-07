@@ -1,0 +1,48 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: devfolio_local_django
+    container_name: django
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app:z
+    environment:
+      # Set these in the CI environment
+      # https://docs.docker.com/compose/environment-variables/#pass-environment-variables-to-containers
+      - POSTGRES_HOST
+      - POSTGRES_PORT
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - DATABASE_URL
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: devfolio_production_postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data:Z
+      - local_postgres_data_backups:/backups:z
+    environment:
+      # Set these in the CI environment
+      # https://docs.docker.com/compose/environment-variables/#pass-environment-variables-to-containers
+      - POSTGRES_HOST
+      - POSTGRES_PORT
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+

@@ -23,7 +23,7 @@ jobs:
       uses: isbang/compose-action@v1.0.0
       with:
         # relative path to compose file
-        compose-file: ./staging.yml # optional, default is ./docker-compose.yml
+        compose-file: ./test.yml # optional, default is ./docker-compose.yml
         # additional options to pass to `docker-compose down` command
         # down-flags: # optional, default is 
     - name: Run Tests
