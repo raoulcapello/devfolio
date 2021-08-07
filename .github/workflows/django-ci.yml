@@ -35,5 +35,5 @@ jobs:
         
     - name: Docker Compose - Test
       run: |
-        docker-compose -f test.yml exec django pytest
+        docker-compose -f test.yml exec -T django pytest
 
