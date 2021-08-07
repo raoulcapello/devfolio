@@ -33,10 +33,6 @@ jobs:
       run: |
         docker-compose -f test.yml up -d --build
         
-    - name: Docker Compose - PS
+    - name: Docker Compose - Test
       run: |
-        docker-compose -f test.yml ps
-
-    - name: Docker Compose - Test (with pytest)
-      run: |
-        docker-compose -f test.yml run --rm django pytest
+        docker-compose -f test.yml exec django pytest
