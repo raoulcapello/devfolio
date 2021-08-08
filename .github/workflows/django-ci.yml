@@ -51,6 +51,7 @@ jobs:
       # Possibru relevant:
       # https://github.com/pydanny/cookiecutter-django/issues/2848
       run: |
+        docker ps -a
         docker-compose -f test.yml run --rm django pytest
 
         

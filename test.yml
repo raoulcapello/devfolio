@@ -29,6 +29,8 @@ services:
     ports:
       - "8000:8000"
     command: /start
+    networks:
+      - backend
 
   postgres:
     build:
@@ -49,3 +51,9 @@ services:
       - POSTGRES_PASSWORD
     ports:
       - "5432:5432"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
