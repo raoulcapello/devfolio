@@ -27,7 +27,7 @@ services:
       - DATABASE_URL
       - USE_DOCKER
     ports:
-      - "8000:8000"
+      - "9001:8000"
     command: /start
     networks:
       - backend
@@ -50,7 +50,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     ports:
-      - "5432:5432"
+      - "8433:5432"
     networks:
       - backend
 
