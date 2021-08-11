@@ -9,10 +9,11 @@
                         </div>
                         <div class="modal-body px-4">
                             <p class="fs-ms text-muted">Sign in to your account using email and password provided during registration.</p>
-                            <form class="needs-validation" novalidate>
+                            <form method="post" action="{% url 'account_login' %}" class="needs-validation" novalidate>
+                                {% csrf_token %}
                                 <div class="mb-3">
-                                    <div class="input-group"><i class="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                                        <input class="form-control rounded" type="email" placeholder="Email" required>
+                                    <div class="input-group"><i class="ai-user position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                                        <input class="form-control rounded" type="username" placeholder="username" required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
