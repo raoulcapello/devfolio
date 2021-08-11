@@ -69,3 +69,6 @@ heroku-production-deploy:
 
 heroku-production-logtail:
 	heroku logs -a devfolio-prod --tail
+
+heroku-production-restart:
+	heroku dyno:restart -a devfolio-prod
