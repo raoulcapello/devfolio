@@ -47,3 +47,25 @@ local-restart:
 
 local-destroy:
 	docker-compose -f local.yml down
+
+### CI/CD pipelines
+
+## Heroku
+
+# Staging
+
+# This will build and run the configured Heroku staging app
+heroku-staging-deploy:
+	git push heroku main:main
+
+heroku-staging-logtail:
+	heroku logs -a devfolio-staging --tail
+
+# Production
+
+# This will promote the staging app to production
+heroku-production-deploy:
+	heroku pipelines:promote -a devfolio-staging
+
+heroku-production-logtail:
+	heroku logs -a devfolio-prod --tail
