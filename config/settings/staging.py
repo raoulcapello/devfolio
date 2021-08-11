@@ -14,9 +14,7 @@ ALLOWED_HOSTS = env.list(
 # ------------------------------------------------------------------------------
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
-DATABASES["default"]["CONN_MAX_AGE"] = env.int(
-    "CONN_MAX_AGE", default=60
-)  # noqa F405
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -80,9 +78,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
 AWS_S3_CUSTOM_DOMAIN = env("DJANGO_AWS_S3_CUSTOM_DOMAIN", default=None)
-aws_s3_domain = (
-    AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-)
+aws_s3_domain = AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 # STATIC
 # ------------------------
 STATICFILES_STORAGE = "devfolio.utils.storages.StaticRootS3Boto3Storage"
@@ -111,14 +107,14 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
     "DJANGO_DEFAULT_FROM_EMAIL",
-    default="DevFolio <noreply@devfolio.herokuapp.com>",
+    default="devfolio staging <noreply@devfolio-staging.herokuapp.com>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX",
-    default="[DevFolio]",
+    default="[devfolio staging]",
 )
 
 # ADMIN
@@ -137,9 +133,7 @@ EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 ANYMAIL = {
     "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),
     "MAILGUN_SENDER_DOMAIN": env("MAILGUN_DOMAIN"),
-    "MAILGUN_API_URL": env(
-        "MAILGUN_API_URL", default="https://api.mailgun.net/v3"
-    ),
+    "MAILGUN_API_URL": env("MAILGUN_API_URL", default="https://api.mailgun.net/v3"),
 }
 
 # Collectfast
@@ -158,9 +152,7 @@ INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}
-    },
+    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
