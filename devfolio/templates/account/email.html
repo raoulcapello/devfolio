@@ -32,11 +32,9 @@
         </div>
         {% endfor %}
 
-        <div class="form-group mt-3">
-            <button class="secondaryAction btn btn-primary" type="submit" name="action_primary">{% translate 'Make Primary' %}</button>
-            <button class="secondaryAction btn btn-primary" type="submit" name="action_send">{% translate 'Re-send Verification' %}</button>
-            <button class="primaryAction btn btn-primary" type="submit" name="action_remove">{% translate 'Remove' %}</button>
-        </div>
+        <button class="secondaryAction btn btn-primary mt-3" type="submit" name="action_primary">{% translate 'Make Primary' %}</button>
+        <button class="secondaryAction btn btn-primary mt-3" type="submit" name="action_send">{% translate 'Re-send Verification' %}</button>
+        <button class="primaryAction btn btn-primary mt-3" type="submit" name="action_remove">{% translate 'Remove' %}</button>
 
     </fieldset>
 </form>
