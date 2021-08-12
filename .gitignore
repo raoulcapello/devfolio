@@ -2,6 +2,15 @@
 *.crt
 *.key
 
+### Docs container
+# The README.rst is located in the project root, and (via the docker compose file)
+# is made available to the 'docs' container via an absolute volume link (see dev.yml
+# and local.yml). This results in an empty file with the same name being created (by 
+# the running container) in the docs/ folder, but this 'shadow file' can safely be 
+# omitted from the repo (since the actual README.rst is located in the project root 
+# and being tracked by the repo).
+docs/readme/*
+
 ### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/

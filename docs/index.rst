@@ -10,6 +10,7 @@ Welcome to devfolio's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   readme/README
    howto
    users
    env_vars

@@ -31,6 +31,7 @@ services:
       - ./docs:/docs:z
       - ./config:/app/config:z
       - ./devfolio:/app/devfolio:z
+      - ./README.rst:/docs/readme/README.rst:z
     ports:
       - "7000:7000"
     command: /start-docs

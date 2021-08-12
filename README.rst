@@ -1,9 +1,10 @@
  .. _README:
 
-.devfolio
+devfolio
 ========
 
 An Online Portfolio Management System for Web Developers and Designers.
+
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter
      :target: https://github.com/pydanny/cookiecutter-django/
