@@ -1,4 +1,6 @@
-DevFolio
+ .. _README:
+
+.devfolio
 ========
 
 An Online Portfolio Management System for Web Developers and Designers.
@@ -9,9 +11,6 @@ An Online Portfolio Management System for Web Developers and Designers.
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
-.. image:: https://github.com/actions/checkout/workflows/test-local/badge.svg
-     :target: https://github.com/actions/checkout
-     :alt: GitHub Actions status
 
 :License: MIT
 

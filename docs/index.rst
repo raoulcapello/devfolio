@@ -1,9 +1,9 @@
-.. DevFolio documentation master file, created by
+.. devfolio documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to DevFolio's documentation!
+Welcome to devfolio's documentation!
 ======================================================================
 
 .. toctree::
