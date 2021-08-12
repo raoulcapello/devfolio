@@ -1,10 +1,5 @@
 version: '3'
 
-networks:
-  proxy:
-    external: true
-  devfolio_backend:
-
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
@@ -26,14 +21,6 @@ services:
     ports:
       - "8000:8000"
     command: /start
-    labels:
-       - traefik.enable=true
-       - traefik.http.routers.django.rule=Host(`devfolio.docker.local`)
-       - traefik.http.routers.django.entrypoints=web
-       - traefik.port=8000
-    networks:
-       - proxy
-       - devfolio_backend
 
   postgres:
     build:
@@ -46,8 +33,6 @@ services:
       - local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
-    networks:
-      - devfolio_backend
 
   docs:
     image: devfolio_local_docs
