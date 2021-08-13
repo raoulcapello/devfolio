@@ -1,0 +1,121 @@
+            {% extends "base.html" %}
+            {% load static i18n %}
+
+            {% block vendor_styles %}
+            <link rel="stylesheet" media="screen" href="{% static 'css/tiny-slider.css' %}" />
+            <link rel="stylesheet" media="screen" href="{% static 'css/lightgallery.min.css' %}" />
+            {% endblock vendor_styles %}
+
+            {% block page_content %}
+            <!-- Page content-->
+            <section class="sidebar-enabled sidebar-end" style="margin-top: -120px;">
+                <div class="container">
+                    <div class="row">
+                        <!-- Project description-->
+                        <div class="col-lg-4 sidebar pt-5 pt-lg-7 order-lg-2">
+                            <div class="px-sm-4 pt-6 py-lg-6 position-relative zindex-5">
+                                <h1 class="h2">Timelinor</h1>
+                                <div class="d-sm-flex align-items-center pt-3 pb-2 mb-5 border-bottom fs-sm">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="text-nowrap text-muted me-3"><i class="ai-calendar me-1"></i><span>Aug 28, 2020</span></div>
+                                        <div class="text-nowrap text-muted"><i class="ai-tag me-1"></i><span>3D Modelling</span></div>
+                                    </div><a class="btn btn-translucent-primary btn-sm ms-auto mb-3 d-inline-block d-lg-none" href="#gallery" data-scroll>Project Gallery</a>
+                                </div>
+                                <h3 class="h5">Client</h3>
+                                <ul class="list-unstyled fs-md mb-4 pb-2">
+                                    <li class="mb-2">Name:<span class="fw-medium text-nav ms-2">International Company Ltd.</span></li>
+                                    <li class="mb-2">Services:<span class="fw-medium text-nav ms-2">3D Modelling, Product Design</span></li>
+                                    <li>Website:<a class="nav-link-style ms-2" href="#">https://example.com</a></li>
+                                </ul>
+                                <h3 class="h5">Objective</h3>
+                                <p class="fs-sm mb-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+                                <h3 class="h5">Tools &amp; Technologies</h3>
+                                <p class="fs-sm mb-4 pb-2">Cinema 4D, Adobe Photoshop</p>
+                                <h3 class="h5">Challenge</h3>
+                                <p class="fs-sm mb-4 pb-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.</p>
+                                <h3 class="h5">Share</h3>
+                                <a class="btn-social bs-outline bs-facebook me-2 my-2" href="#"><i class="ai-facebook"></i></a>
+                                <a class="btn-social bs-outline bs-twitter me-2 my-2" href="#"><i class="ai-twitter"></i></a>
+                                <a class="btn-social bs-outline bs-google me-2 my-2" href="#"><i class="ai-google"></i></a>
+                                <a class="btn-social bs-outline bs-pinterest my-2" href="#"><i class="ai-pinterest"></i></a>
+                            </div>
+                        </div>
+                        <!-- Project gallery (List)-->
+                        <div class="col-lg-8 content pt-2 pt-lg-7 pb-lg-4 order-lg-1" id="gallery">
+                            <div class="gallery pt-5 pb-4 py-lg-5">
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-6.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-6.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-7.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-7.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-8.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-8.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-2.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-2.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-1.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-1.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-3.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-3.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-4.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-4.png' %}" alt="Gallery thumbnail"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-5.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-5.png' %}" alt="Gallery thumbnail"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Related projects (Carousel)-->
+            <section class="border-top py-5 py-lg-6">
+                <div class="container py-3 py-md-0">
+                    <h2 class="h3 text-center mb-5">Related projects</h2>
+                    <div class="tns-carousel-wrapper">
+                        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1000&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}">
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner"><img class="card-img" src="{% static 'img/portfolio/timelinor/timelinor-screenshot-1.png' %}" alt="Portfolio thumb"><a class="card-body text-center" href="#">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">Promo Flyer Design</h3>
+                                            <p class="fs-sm text-muted mb-1">in Stationery</p>
+                                        </a></div>
+                                </div>
+                            </div>
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner"><img class="card-img" src="{% static 'img/portfolio/timelinor/timelinor-screenshot-2.png' %}" alt="Portfolio thumb"><a class="card-body text-center" href="#">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">Cosmetics Packaging</h3>
+                                            <p class="fs-sm text-muted mb-1">in Package Design</p>
+                                        </a></div>
+                                </div>
+                            </div>
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner"><img class="card-img" src="{% static 'img/portfolio/timelinor/timelinor-screenshot-3.png' %}" alt="Portfolio thumb"><a class="card-body text-center" href="#">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">Hand Cream Bottle</h3>
+                                            <p class="fs-sm text-muted mb-1">in Package Design</p>
+                                        </a></div>
+                                </div>
+                            </div>
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner"><img class="card-img" src="{% static 'img/portfolio/timelinor/timelinor-screenshot-4.png' %}" alt="Portfolio thumb"><a class="card-body text-center" href="#">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">Package Branding</h3>
+                                            <p class="fs-sm text-muted mb-1">in Identity Design</p>
+                                        </a></div>
+                                </div>
+                            </div>
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner"><img class="card-img" src="{% static 'img/portfolio/timelinor/timelinor-screenshot-5.png' %}" alt="Portfolio thumb"><a class="card-body text-center" href="#">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">Company Branding</h3>
+                                            <p class="fs-sm text-muted mb-1">in Identity Design</p>
+                                        </a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endblock page_content %}
+
+            {% block vendor_scripts %}
+            <script src="{% static 'js/tiny-slider.js' %}"></script>
+            <script src="{% static 'js/lightgallery.min.js' %}"></script>
+            <script src="{% static 'js/lg-fullscreen.min.js' %}"></script>
+            <script src="{% static 'js/lg-zoom.min.js' %}"></script>
+            {% endblock vendor_scripts %}

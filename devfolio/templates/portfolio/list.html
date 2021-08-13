@@ -1,0 +1,109 @@
+            {% extends "base.html" %}
+            {% load static i18n %}
+
+            {% block page_content %}
+            <!-- Page content-->
+            <!-- Page title-->
+            <section class="position-relative bg-dark pt-7 pb-5 pb-md-7 bg-size-cover bg-attachment-fixed" style="background-image: url({% static 'img/cubes-bg.jpg' %}); margin-top: -200px;">
+                <div class="shape shape-bottom shape-curve bg-body">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+                        <path fill="currentColor" d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+                    </svg>
+                </div>
+                <div class="container position-relative zindex-5 text-center pt-md-6 pt-lg-7 py-5 my-lg-3">
+                    <h1 class="text-light mb-0">My Portfolio<span class="h2 d-inline-block bg-faded-primary text-primary px-3 py-2 rounded-3 ms-3">2021</span></h1>
+                </div>
+            </section>
+            <!-- Portfolio grid-->
+            <section class="container overflow-hidden py-5 py-md-6 py-lg-7">
+                <div class="masonry-filterable pt-3 pt-md-0">
+                    <ul class="masonry-filters nav nav-tabs justify-content-center pb-4">
+                        <li class="nav-item"><a class="nav-link active" href="#" data-group="all">All</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-group="django">Django</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-group="python">Python</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-group="react">React</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-group="c">C</a></li>
+                    </ul>
+                    <div class="masonry-grid" data-columns="2">
+                        <div class="masonry-grid-item" data-groups="[&quot;django&quot;]">
+                            <div class="card card-flip">
+                                <div class="card-flip-inner">
+                                    <div class="card-flip-front">
+                                        <img class="card-img" src="{% static 'img/portfolio/timelinor/showcase-6.png' %}" alt="Portfolio thumb">
+                                    </div>
+                                    <a class="card-flip-back" href="{% url 'portfolio:detail' 1 %}">
+                                        <div class="card-body">
+                                            <div class="card-body-inner">
+                                                <h3 class="h5 card-title mb-2">Toothbrush Render</h3>
+                                                <p class="fs-sm text-muted">in 3D Modelling</p>
+                                                <span class="btn btn-primary btn-sm">View project</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="masonry-grid-item" data-groups="[&quot;python&quot;]">
+                            <div class="card card-flip">
+                                <div class="card-flip-inner">
+                                    <div class="card-flip-front">
+                                        <img class="card-img" src="{% static 'img/portfolio/timelinor/showcase-7.png' %}" alt="Portfolio thumb">
+                                    </div>
+                                    <a class="card-flip-back" href="{% url 'portfolio:detail' 1 %}">
+                                        <div class="card-body">
+                                            <div class="card-body-inner">
+                                                <h3 class="h5 card-title mb-2">Toothbrush Render</h3>
+                                                <p class="fs-sm text-muted">in 3D Modelling</p>
+                                                <span class="btn btn-primary btn-sm">View project</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="masonry-grid-item" data-groups="[&quot;react&quot;]">
+                            <div class="card card-flip">
+                                <div class="card-flip-inner">
+                                    <div class="card-flip-front">
+                                        <img class="card-img" src="{% static 'img/portfolio/timelinor/showcase-8.png' %}" alt="Portfolio thumb">
+                                    </div>
+                                    <a class="card-flip-back" href="{% url 'portfolio:detail' 1 %}">
+                                        <div class="card-body">
+                                            <div class="card-body-inner">
+                                                <h3 class="h5 card-title mb-2">Toothbrush Render</h3>
+                                                <p class="fs-sm text-muted">in 3D Modelling</p>
+                                                <span class="btn btn-primary btn-sm">View project</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="masonry-grid-item" data-groups="[&quot;c&quot;]">
+                            <div class="card card-flip">
+                                <div class="card-flip-inner">
+                                    <div class="card-flip-front">
+                                        <img class="card-img" src="{% static 'img/portfolio/timelinor/showcase-1.png' %}" alt="Portfolio thumb">
+                                    </div>
+                                    <a class="card-flip-back" href="{% url 'portfolio:detail' 1 %}">
+                                        <div class="card-body">
+                                            <div class="card-body-inner">
+                                                <h3 class="h5 card-title mb-2">Toothbrush Render</h3>
+                                                <p class="fs-sm text-muted">in 3D Modelling</p>
+                                                <span class="btn btn-primary btn-sm">View project</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- /.masonry-grid -->
+                    <div class="text-center py-3 pb-md-0"><a class="btn btn-primary" href="#"><i class="ai-refresh-ccw me-2"></i>Load More</a></div>
+            </section>
+
+            {% endblock page_content %}
+
+            {% block vendor_scripts %}
+            <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+            <script src="{% static 'js/shuffle.min.js' %}"></script>
+            {% endblock vendor_scripts %}
