@@ -4,9 +4,6 @@
         "scripts": {
           "test": "pytest"
         },
-      "review": {
-        "addons": ["heroku-postgresql:in-dyno"]
-      },
       "formation": {
         "test": {
           "quantity": 1,
