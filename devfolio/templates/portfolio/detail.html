@@ -17,15 +17,17 @@
                                 <h1 class="h2">Timelinor</h1>
                                 <div class="d-sm-flex align-items-center pt-3 pb-2 mb-5 border-bottom fs-sm">
                                     <div class="d-flex align-items-center mb-3">
-                                        <div class="text-nowrap text-muted me-3"><i class="ai-calendar me-1"></i><span>Aug 28, 2020</span></div>
-                                        <div class="text-nowrap text-muted"><i class="ai-tag me-1"></i><span>3D Modelling</span></div>
-                                    </div><a class="btn btn-translucent-primary btn-sm ms-auto mb-3 d-inline-block d-lg-none" href="#gallery" data-scroll>Project Gallery</a>
+                                        <div class="text-nowrap text-muted me-3"><i class="ai-calendar me-1"></i><span>Aug 16, 2021</span></div>
+                                        <div class="text-nowrap text-muted"><i class="ai-tag me-1"></i><span>Django, C, Python</span></div>
+                                    </div>
+                                    <a class="btn btn-translucent-primary btn-sm ms-auto mb-3 d-inline-block d-lg-none" href="#gallery" data-scroll>Project Gallery</a>
                                 </div>
-                                <h3 class="h5">Client</h3>
+                                <h3 class="h5">Project</h3>
                                 <ul class="list-unstyled fs-md mb-4 pb-2">
-                                    <li class="mb-2">Name:<span class="fw-medium text-nav ms-2">International Company Ltd.</span></li>
-                                    <li class="mb-2">Services:<span class="fw-medium text-nav ms-2">3D Modelling, Product Design</span></li>
-                                    <li>Website:<a class="nav-link-style ms-2" href="#">https://example.com</a></li>
+                                    <li class="mb-2">Name:<span class="fw-medium text-nav ms-2">Harvard CS50 Web Course</span></li>
+                                    <li class="mb-2">Services:<span class="fw-medium text-nav ms-2">Final Project</span></li>
+                                    <li><i class="ai-globe" alt="Live URL"></i><a class="nav-link-style ms-2" href="https://devfolio.raoulcapello.com" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check it out live!">devfolio.raoulcapello.com</a></li>
+                                    <li><i class="ai-github"></i><a class="nav-link-style ms-2" href="https://github.com/raoulcapello/devfolio" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check out the source code!">raoulcapello/devfolio</a></li>
                                 </ul>
                                 <h3 class="h5">Objective</h3>
                                 <p class="fs-sm mb-4 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
@@ -43,6 +45,11 @@
                         <!-- Project gallery (List)-->
                         <div class="col-lg-8 content pt-2 pt-lg-7 pb-lg-4 order-lg-1" id="gallery">
                             <div class="gallery pt-5 pb-4 py-lg-5">
+                                <!-- Video -->
+                                <a href="https://youtu.be/bM8lZVx4Lnk" class="gallery-item gallery-video rounded-3 mb-grid-gutter" data-sub-html='<h6 class="fs-sm text-light">A 3-minute overview</h6>'>
+                                    <img src="{% static 'img/portfolio/timelinor/showcase-8.png' %}" alt="Timelinor 3-minute video">
+                                    <span class="gallery-caption">A 3-minute overview</span>
+                                </a>
                                 <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-6.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-6.png' %}" alt="Gallery thumbnail"></a>
                                 <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-7.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-7.png' %}" alt="Gallery thumbnail"></a>
                                 <a class="gallery-item rounded-3 mb-grid-gutter" href="{% static 'img/portfolio/timelinor/showcase-8.png' %}"><img src="{% static 'img/portfolio/timelinor/showcase-8.png' %}" alt="Gallery thumbnail"></a>
@@ -118,4 +125,5 @@
             <script src="{% static 'js/lightgallery.min.js' %}"></script>
             <script src="{% static 'js/lg-fullscreen.min.js' %}"></script>
             <script src="{% static 'js/lg-zoom.min.js' %}"></script>
+            <script src="{% static 'js/lg-video.min.js' %}"></script>
             {% endblock vendor_scripts %}
