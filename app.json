@@ -5,7 +5,7 @@
           "test": "pytest"
         },
       "review": {
-        "addons": ["heroku-postgresql:hobby-dev"]
+        "addons": ["heroku-postgresql:in-dyno"]
       },
       "formation": {
         "test": {
