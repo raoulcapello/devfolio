@@ -1,6 +1,6 @@
 {
-  /* 
-      Linting 
+  /*
+      Linting
   */
 
   "python.linting.enabled": true,
@@ -14,7 +14,7 @@
   "python.linting.flake8Enabled": true,
 
   /*
-      Formatting 
+      Formatting
   */
 
   // Configure the Black code formatter
