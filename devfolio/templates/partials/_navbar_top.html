@@ -9,7 +9,7 @@
                     {% endif %}
                     <div class="container px-0 px-xl-3">
                         <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button>
-                        <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="{% url 'home' %}">
+                        <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="{% url 'portfolio:home' %}">
                             <img class="d-none d-lg-block" src="{% static 'img/portfolio.svg' %}" alt="devfolio" width="50">
                             <img class="d-lg-none" src="{% static 'img/portfolio.svg' %}" alt="devfolio" width="50">
                         </a>
@@ -22,11 +22,11 @@
                                 <!-- Menu-->
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown dropdown-mega">
-                                        <a class="nav-link dropdown-toggle" href="{% url 'home' %}" data-bs-toggle="dropdown">Raoul Capello • Portfolio</a>
+                                        <a class="nav-link dropdown-toggle" href="{% url 'portfolio:home' %}" data-bs-toggle="dropdown">Raoul Capello • Portfolio</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-column dropdown-column-img bg-secondary" href="{% url 'home' %}" style="background-image: url({% static 'img/portfolio.svg' %}); background-position: center;"></a>
+                                            <a class="dropdown-column dropdown-column-img bg-secondary" href="{% url 'portfolio:home' %}" style="background-image: url({% static 'img/portfolio.svg' %}); background-position: center;"></a>
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'home' %}">{% translate "Home" %}</a>
+                                                <a class="dropdown-item" href="{% url 'portfolio:home' %}">{% translate "Home" %}</a>
                                                 <a class="dropdown-item" href="{% url 'about' %}">{% translate "About" %}</a>
                                             </div>
                                             <div class="dropdown-column">

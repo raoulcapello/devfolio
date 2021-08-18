@@ -7,40 +7,69 @@
             <section class="container mb-3 my-md-0 py-5 py-md-6">
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-5 order-md-1 order-2 text-md-start text-center">
-                        <h1 class="display-4 mb-lg-4 mb-3">Hey, I’m Raoul</h1>
-                        <h2 class="mb-lg-5 mb-4 text-muted">Web Developer &amp; Consultant</h2>
-                        <div class="text-nowrap"><a class="btn btn-translucent-primary me-3" href="#"><i class="ai-arrow-down-circle mt-n1 me-2"></i>Download CV</a><a class="btn btn-outline-primary" href="#portfolio" data-scroll>Portfolio</a></div>
+                        <h1 class="display-4 mb-lg-4 mb-3">{{ portfolio.title|default:"Project Title" }}</h1>
+                        <h2 class="mb-lg-5 mb-4 text-muted">{{ portfolio.subtitle|default:"Project Subtitle" }}</h2>
+                        <div class="text-nowrap">
+                            {% if portfolio.resume %}
+                            <a class="btn btn-translucent-primary me-3" href="{{ portfolio.resume.url }}" download>
+                                <i class="ai-arrow-down-circle mt-n1 me-2"></i>
+                                Download CV
+                            </a>
+                            {% endif %}
+                            <a class="btn btn-outline-primary" href="#portfolio" data-scroll>Portfolio</a>
+                        </div>
                     </div>
-                    <div class="col-lg-8 col-md-7 order-md-2 order-1 mb-md-0 mb-grid-gutter"><img src="{% static 'img/raoul-1.png' %}" alt="Illustration"></div>
+                    <div class="col-lg-8 col-md-7 order-md-2 order-1 mb-md-0 mb-grid-gutter">
+                        {% if portfolio.featured_image %}
+                        <img src="{{ portfolio.featured_image.url }}" alt="{{ portfolio.title|default:"Project Title" }}">
+                        {% else %}
+                        <img src="{% static 'img/hero-illustration.svg' %%}" alt="{{ portfolio.title|default:"Project Title" }}">
+                        {% endif %}
+                    </div>
                 </div>
             </section>
             <!-- Services-->
             <section class="bg-faded-primary position-relative py-md-7 py-5">
                 <div class="container my-2 my-md-0">
                     <div class="row align-items-center">
-                        <div class="col-md-5 mb-md-0 mb-5 pb-md-0 pb-3"><img class="d-block mx-md-0 mx-auto" src="{% static 'img/services-illustration.svg' %}" alt="Illustration"></div>
+                        <div class="col-md-5 mb-md-0 mb-5 pb-md-0 pb-3">
+                            {% if portfolio.usp_main_image %}
+                            <img class="d-block mx-md-0 mx-auto" src="{{ portfolio.usp_main_image.url }}" alt="Illustration">
+                            {% else %}
+                            <img class="d-block mx-md-0 mx-auto" src="{% static 'img/raoul-2.png' %}" alt="Illustration">
+                            {% endif %}
+                        </div>
                         <div class="col-lg-6 offset-lg-1 col-md-7 text-md-start text-center">
                             <div class="mx-md-0 mx-auto" style="max-width: 500px;">
                                 <h2 class="mb-md-5 mb-4">What I do best</h2>
                                 <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block mb-4 pb-2"><img class="me-md-4 mb-md-0 mb-4" src="{% static 'img/01.svg' %}" alt="Icon">
+                                <div class="d-md-flex align-items-start d-block mb-4 pb-2">
+                                    {% if portfolio.usp1_image %}
+                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp1_image.url }}" alt="Icon">
+                                    {% endif %}
                                     <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">Creative illustrations</h3>
-                                        <p class="mb-0 fs-sm">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis voluptatum deleniti atque.</p>
+                                        <h3 class="h6 mb-2">{{ portfolio.usp1_title }}</h3>
+                                        <p class="mb-0 fs-sm">{{ portfolio.usp1_description }}</p>
                                     </div>
                                 </div>
                                 <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block mb-4 pb-2"><img class="me-md-4 mb-md-0 mb-4" src="{% static 'img/02.svg' %}" alt="Icon">
+                                <div class="d-md-flex align-items-start d-block mb-4 pb-2">
+                                    {% if portfolio.usp2_image %}
+                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp2_image.url }}" alt="Icon">
+                                    {% endif %}
                                     <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">Graphic identity and branding</h3>
-                                        <p class="mb-0 fs-sm">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia occaecati cupiditate non provident.</p>
+                                        <h3 class="h6 mb-2">{{ portfolio.usp2_title }}</h3>
+                                        <p class="mb-0 fs-sm">{{ portfolio.usp2_description }}</p>
                                     </div>
                                 </div>
                                 <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block"><img class="me-md-4 mb-md-0 mb-4" src="{% static 'img/03.svg' %}" alt="Icon">
+                                <div class="d-md-flex align-items-start d-block">
+                                    {% if portfolio.usp3_image %}
+                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp3_image.url }}" alt="Icon">
+                                    {% endif %}
                                     <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">Graphic Packaging Design</h3>
-                                        <p class="mb-0 fs-sm">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                        <h3 class="h6 mb-2">{{ portfolio.usp3_title }}</h3>
+                                        <p class="mb-0 fs-sm">{{ portfolio.usp3_description }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +83,9 @@
                 </div>
             </section>
             <!-- Portfolio-->
+            {% if items %}
             {% include 'partials/_portfolio.html' %}
+            {% endif %}
             {% comment %}
             <!-- Testimonials-->
             <section class="bg-faded-primary position-relative py-md-7 py-5">

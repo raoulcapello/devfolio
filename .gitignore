@@ -2,6 +2,9 @@
 *.crt
 *.key
 
+### Database dumps
+dumps/
+
 ### Docs container
 # The README.rst is located in the project root, and (via the docker compose file)
 # is made available to the 'docs' container via an absolute volume link (see dev.yml

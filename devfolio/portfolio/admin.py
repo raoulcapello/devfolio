@@ -1,3 +1,9 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-# Register your models here.
+from .models import Portfolio, Project, Screenshot, Tag, VideoURL
+
+admin.site.register(Portfolio)
+admin.site.register(Project)
+admin.site.register(Tag)
+admin.site.register(Screenshot)
+admin.site.register(VideoURL)
