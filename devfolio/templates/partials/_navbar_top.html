@@ -22,12 +22,6 @@
                                         <a class="dropdown-item" href="{% url 'home' %}">{% translate "Home" %}</a>
                                         <a class="dropdown-item" href="{% url 'about' %}">{% translate "About" %}</a>
                                     </div>
-                                    {% if request.user.is_authenticated %}
-                                    <div class="dropdown-column">
-                                        <a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-                                        <a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-                                    </div>
-                                    {% endif %}
                                 </div>
                             </li>
                         </ul>
