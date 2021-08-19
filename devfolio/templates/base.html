@@ -23,9 +23,10 @@
     {% block css %}
     <!-- Vendor Styles-->
     <link rel="stylesheet" media="screen" href="{% static 'css/simplebar.min.css' %}" />
+    {% block vendor_styles %}{% endblock vendor_styles %}
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="{% static 'css/theme.min.css' %}">
-    <!-- DevFolio Stylesheet -->
+    <!-- devfolio Stylesheet -->
     <link rel="stylesheet" media="screen" href="{% static 'css/devfolio.css' %}">
     {% comment %}
     <link rel="stylesheet" media="screen" href="{% static 'css/page-load-spinner.css' %}"> {% endcomment %}
@@ -51,28 +52,26 @@
     </div>
     {% endcomment %}
 
-    <main class="page-wrapper d-flex flex-column">
+    <main class="page-wrapper">
 
         {% include 'partials/_navbar_top.html' %}
 
         {% include 'partials/_messages.html' %}
 
+        {% block page_content %}
         <!-- Page content-->
         <div class="container d-flex flex-column pt-5 mt-n6" style="flex: 1 0 auto;">
             {% block content %}This is not the content you're looking for.{% endblock content %}
         </div> <!-- /.container -->
+        {% endblock page_content %}
 
     </main>
 
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container d-md-flex align-items-center justify-content-between py-2 text-center text-md-end">
-            <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
-                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Support</a></li>
-                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Contacts</a></li>
-                <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Terms &amp; Conditions</a></li>
-            </ul>
-            <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">© All rights reserved. Made by</span><a class="nav-link-style fw-normal" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></p>
+            <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Code by</span><a class="nav-link-style fw-normal" href="https://devfolio.raoulcapello.com/">Raoul Capello</a>.</p>
+            <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Theme by</span><a class="nav-link-style fw-normal" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a>. © All rights reserved.</p>
         </div>
     </footer>
 
@@ -88,6 +87,7 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/simplebar.min.js' %}"></script>
     <script src="{% static 'js/smooth-scroll.polyfills.min.j' %}s"></script>
+    {% block vendor_scripts %}{% endblock vendor_scripts %}
     <!-- Main theme script-->
     <script src="{% static 'js/theme.min.js' %}"></script>
 

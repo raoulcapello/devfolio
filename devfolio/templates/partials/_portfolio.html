@@ -1,0 +1,47 @@
+            {% load static i18n %}
+            <section class="overflow-hidden" id="portfolio">
+                <div class="container py-lg-7 py-md-6 py-5 my-2 my-md-0">
+                    <h2 class="mb-3 text-center">My portfolio</h2>
+                    <p class="mb-4 pb-md-2 text-muted text-center">Most recent projects I have completed</p>
+                    <div class="masonry-filterable">
+                        <!-- Portfolio nav (Filters)-->
+                        <nav class="pb-3 mb-4" data-simplebar data-simplebar-auto-hide="false">
+                            <ul class="masonry-filters nav nav-tabs justify-content-sm-center flex-nowrap text-nowrap mb-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-group="all">All</a>
+                                </li>
+                                {% if tags %}
+                                {% for tag in tags %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-group="{{ tag.title|lower }}">{{ tag.title }}</a>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        <!-- Portfolio grid-->
+                        <div class="masonry-grid" data-columns="2">
+                            {% for item in items %}
+                            <div class="masonry-grid-item" data-groups='[{% for tag in item.tag_set.all %}&quot;{{ tag.title|lower }}&quot;{% if not forloop.last %},{% endif %}{% endfor %}]'>
+                                <div class="card card-flip">
+                                    <div class="card-flip-inner">
+                                        <div class="card-flip-front">
+                                            <img class="card-img" src="{{ item.featured_image.url }}" alt="{{ item.title }}">
+                                        </div>
+                                        <a class="card-flip-back" href="{{ item.get_absolute_url }}">
+                                            <div class="card-body">
+                                                <div class="card-body-inner">
+                                                    <h3 class="h5 card-title mb-2">{{ item.title }}</h3>
+                                                    <p class="fs-sm text-muted">{{ item.description }}</p>
+                                                    <span class="btn btn-primary btn-sm">View project</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div> <!-- /.masonry-grid -->
+                    </div> <!-- /.masonry-filterable -->
+                </div> <!-- /.container -->
+            </section>

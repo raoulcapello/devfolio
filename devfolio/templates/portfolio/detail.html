@@ -1,0 +1,128 @@
+            {% extends "base.html" %}
+            {% load static i18n %}
+
+            {% block vendor_styles %}
+            <link rel="stylesheet" media="screen" href="{% static 'css/tiny-slider.css' %}" />
+            <link rel="stylesheet" media="screen" href="{% static 'css/lightgallery.min.css' %}" />
+            {% endblock vendor_styles %}
+
+            {% block page_content %}
+            <!-- Page content-->
+            <section class="sidebar-enabled sidebar-end" style="margin-top: -120px;">
+                <div class="container">
+                    <div class="row">
+                        <!-- Project description-->
+                        <div class="col-lg-4 sidebar pt-5 pt-lg-7 order-lg-2">
+                            <div class="px-sm-4 pt-6 py-lg-6 position-relative zindex-5">
+                                <h1 class="h2">{{ project.title }}</h1>
+                                <div class="d-sm-flex align-items-center pt-3 pb-2 mb-5 border-bottom fs-sm">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="text-nowrap text-muted me-3"><i class="ai-calendar me-1"></i><span>{{ project.date }}</span></div>
+                                        {% if project.tag_set.all %}
+                                        <div class="text-nowrap text-muted"><i class="ai-tag me-1"></i><span>{% for tag in project.tag_set.all %}{{ tag.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</span></div>
+                                        {% endif %}
+                                    </div>
+                                    <a class="btn btn-translucent-primary btn-sm ms-auto mb-3 d-inline-block d-lg-none" href="#gallery" data-scroll>Project Gallery</a>
+                                </div>
+                                <h3 class="h5">Client</h3>
+                                <ul class="list-unstyled fs-md mb-4 pb-2">
+                                    {% if project.client %}
+                                    <li class="mb-2">
+                                        {% if project.client_url %}
+                                        Name:<a class="nav-link-style ms-2" href="{{ project.client_url }}" target="_blank" rel="noopener">{{ project.client }}</a>
+                                        {% else %}
+                                        Name:<span class="fw-medium text-nav ms-2">{{ project.client }}</span>
+                                        {% endif %}
+                                    </li>
+                                    {% endif %}
+                                    {% if project.services %}
+                                    <li class="mb-2">Services:<span class="fw-medium text-nav ms-2">{{ project.services }}</span></li>
+                                    {% endif %}
+                                    {% if live_url_short %}
+                                    <li>
+                                        <i class="ai-globe" alt="Live URL"></i>
+                                        <a class="nav-link-style ms-2" href="{{ project.live_url }}" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check it out live!">{{ live_url_short }}</a>
+                                    </li>
+                                    {% endif %}
+                                    {% if repo_url_short %}
+                                    <li><i class="ai-github"></i><a class="nav-link-style ms-2" href="{{ project.repo_url }}" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check out the source code!">{{ repo_url_short }}</a></li>
+                                    {% endif %}
+                                </ul>
+                                <h3 class="h5">Objective</h3>
+                                <p class="fs-sm mb-4 pb-2">{{ project.objective_text }}</p>
+                                <h3 class="h5">Tools &amp; Technologies</h3>
+                                <p class="fs-sm mb-4 pb-2">{{ project.tools_n_tech_text }}</p>
+                                <h3 class="h5">Challenge</h3>
+                                <p class="fs-sm mb-4 pb-2">{{ project.challenge_text }}</p>
+                                <h3 class="h5">Share</h3>
+                                {% if project.share_fb %}
+                                <a class="btn-social bs-outline bs-facebook me-2 my-2" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" rel="noopener">
+                                    <i class="ai-facebook"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.share_twitter %}
+                                <a class="btn-social bs-outline bs-twitter me-2 my-2" href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}" target="_blank" rel="noopener">
+                                    <i class="ai-twitter"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Project gallery (List)-->
+                        <div class="col-lg-8 content pt-2 pt-lg-7 pb-lg-4 order-lg-1" id="gallery">
+                            <div class="gallery pt-5 pb-4 py-lg-5">
+                                {% if project.videourl_set.all %}
+                                <!-- Video -->
+                                {% for video in project.videourl_set.all %}
+                                <a href="{{ video.url }}" class="gallery-item gallery-video rounded-3 mb-grid-gutter" data-sub-html='<h6 class="fs-sm text-light">{{ video.caption }}</h6>'>
+                                    <img src="{{ video.screenshot.url }}" alt="{{ video.caption }}">
+                                    <span class="gallery-caption">{{ video.caption }}</span>
+                                </a>
+                                {% endfor %}
+                                {% endif %}
+                                {% if project.screenshot_set.all %}
+                                {% for screenshot in project.screenshot_set.all %}
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{{ screenshot.screenshot.url }}"><img src="{{ screenshot.screenshot.url }}" alt="{{ screenshot.caption }}"></a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {% if related %}
+            <!-- Related projects (Carousel)-->
+            <section class="border-top py-5 py-lg-6">
+                <div class="container py-3 py-md-0">
+                    <h2 class="h3 text-center mb-5">Related projects</h2>
+                    <div class="tns-carousel-wrapper">
+                        <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1000&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}">
+                            {% for project in related %}
+                            <!-- Item-->
+                            <div class="pb-2">
+                                <div class="card card-curved-body shadow card-slide mx-1">
+                                    <div class="card-slide-inner">
+                                        <img class="card-img" src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                                        <a class="card-body text-center" href="{{ project.get_absolute_url }}">
+                                            <h3 class="h5 nav-heading mt-1 mb-2">{{ project.title }}</h3>
+                                            <p class="fs-sm text-muted mb-1"><i class="ai-tag me-1"></i><span>{% for tag in project.tag_set.all %}{{ tag.title }}{% if not forloop.last %}, {% endif %}{% endfor %}</span></p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div> <!-- /.tns-carousel-inner -->
+                    </div> <!-- /.tns-carousel-wrapper -->
+                </div> <!-- /.container -->
+            </section>
+            {% endif %}
+
+            {% endblock page_content %}
+
+            {% block vendor_scripts %}
+            <script src="{% static 'js/tiny-slider.js' %}"></script>
+            <script src="{% static 'js/lightgallery.min.js' %}"></script>
+            <script src="{% static 'js/lg-fullscreen.min.js' %}"></script>
+            <script src="{% static 'js/lg-zoom.min.js' %}"></script>
+            <script src="{% static 'js/lg-video.min.js' %}"></script>
+            {% endblock vendor_scripts %}
