@@ -22,7 +22,12 @@ class Portfolio(models.Model):
 
     title = models.CharField(_("Title"), max_length=100)
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
-    description = models.TextField(_("Description"), max_length=300, blank=True)
+    description = models.TextField(
+        _("Description"), max_length=300, blank=True
+    )
+    frontpage_greeting = models.CharField(
+        _("Frontpage Greeting"), max_length=50, blank=True
+    )
     featured_image = models.ImageField(
         _("Featured Image"),
         upload_to="images",
@@ -82,7 +87,9 @@ class Project(models.Model):
 
     title = models.CharField(_("Title"), max_length=100)
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
-    description = models.TextField(_("Description"), max_length=300, blank=True)
+    description = models.TextField(
+        _("Description"), max_length=300, blank=True
+    )
     featured_image = models.ImageField(_("Featured Image"), upload_to="images")
     date = models.DateField(_("Date"), default=timezone.now)
     client = models.CharField(_("Client"), max_length=50, blank=True)
@@ -90,11 +97,15 @@ class Project(models.Model):
     client_url = models.URLField(_("Client URL"), max_length=200, blank=True)
     live_url = models.URLField(_("Live URL"), max_length=200, blank=True)
     repo_url = models.URLField(_("Repo URL"), max_length=200, blank=True)
-    objective_text = models.TextField(_("Objective"), max_length=500, blank=True)
+    objective_text = models.TextField(
+        _("Objective"), max_length=500, blank=True
+    )
     tools_n_tech_text = models.TextField(
         _("Tools and Tech"), max_length=500, blank=True
     )
-    challenge_text = models.TextField(_("Challenge"), max_length=500, blank=True)
+    challenge_text = models.TextField(
+        _("Challenge"), max_length=500, blank=True
+    )
     share_fb = models.BooleanField(_("Share on FaceBook"), default=False)
     share_twitter = models.BooleanField(_("Share on Twitter"), default=False)
 

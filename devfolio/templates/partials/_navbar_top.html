@@ -13,6 +13,30 @@
                             <img class="d-none d-lg-block" src="{% static 'img/portfolio.svg' %}" alt="devfolio" width="50">
                             <img class="d-lg-none" src="{% static 'img/portfolio.svg' %}" alt="devfolio" width="50">
                         </a>
+                        {% if request.user.is_authenticated %}
+                        <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+                            <div class="navbar-tool dropdown">
+                                <a class="navbar-tool-label dropdown-toggle" href="{% url 'admin:index' %}">
+                                    <small>Hello,</small>{{ request.user.username|capfirst }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" style="width: 15rem;">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="{% url 'admin:index' %}">
+                                            <i class="ai-key fs-base opacity-60 me-2"></i>
+                                            Admin
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}">
+                                            <i class="ai-log-out fs-base opacity-60 me-2"></i>
+                                            Sign out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
                         <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
                             <div class="offcanvas-header navbar-shadow">
                                 <h5 class="mt-1 mb-0">Menu</h5>
@@ -22,22 +46,15 @@
                                 <!-- Menu-->
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown dropdown-mega">
-                                        <a class="nav-link dropdown-toggle" href="{% url 'portfolio:home' %}" data-bs-toggle="dropdown">Raoul Capello • Portfolio</a>
+                                        <a class="nav-link dropdown-toggle" href="{% url 'portfolio:home' %}" data-bs-toggle="dropdown">{{ portfolio.title }} • Portfolio</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-column dropdown-column-img bg-secondary" href="{% url 'portfolio:home' %}" style="background-image: url({% static 'img/portfolio.svg' %}); background-position: center;"></a>
                                             <div class="dropdown-column">
                                                 <a class="dropdown-item" href="{% url 'portfolio:home' %}">{% translate "Home" %}</a>
+                                            </div>
+                                            <div class="dropdown-column">
                                                 <a class="dropdown-item" href="{% url 'about' %}">{% translate "About" %}</a>
                                             </div>
-                                            <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'portfolio:list' %}">{% translate "Portfolio" %}</a>
-                                            </div>
-                                            {% if request.user.is_authenticated %}
-                                            <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-                                                <a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-                                            </div>
-                                            {% endif %}
                                         </div>
                                     </li>
                                 </ul>

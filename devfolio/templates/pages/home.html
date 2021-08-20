@@ -7,7 +7,11 @@
             <section class="container mb-3 my-md-0 py-5 py-md-6">
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-5 order-md-1 order-2 text-md-start text-center">
-                        <h1 class="display-4 mb-lg-4 mb-3">{{ portfolio.title|default:"Project Title" }}</h1>
+                        {% if portfolio.frontpage_greeting %}
+                        <h1 class="display-4 mb-lg-4 mb-3">{{ portfolio.frontpage_greeting }}</h1>
+                        {% else %}
+                        <h1 class="display-4 mb-lg-4 mb-3">{{ portfolio.title|default:"Greeting or Project Title" }}</h1>
+                        {% endif %}
                         <h2 class="mb-lg-5 mb-4 text-muted">{{ portfolio.subtitle|default:"Project Subtitle" }}</h2>
                         <div class="text-nowrap">
                             {% if portfolio.resume %}
