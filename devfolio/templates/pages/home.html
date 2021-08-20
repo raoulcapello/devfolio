@@ -1,7 +1,13 @@
             {% extends "base.html" %}
             {% load static i18n %}
 
+            {% block vendor_styles %}
+            <link rel="stylesheet" href="{% static 'css/tiny-slider.css' %}">
+            {% endblock vendor_styles %}
+
+
             {% block page_content %}
+
             <!-- Page content-->
             <!-- Hero-->
             <section class="container mb-3 my-md-0 py-5 py-md-6">
@@ -32,118 +38,25 @@
                     </div>
                 </div>
             </section>
-            <!-- Services-->
-            <section class="bg-faded-primary position-relative py-md-7 py-5">
-                <div class="container my-2 my-md-0">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 mb-md-0 mb-5 pb-md-0 pb-3">
-                            {% if portfolio.usp_main_image %}
-                            <img class="d-block mx-md-0 mx-auto" src="{{ portfolio.usp_main_image.url }}" alt="Illustration">
-                            {% else %}
-                            <img class="d-block mx-md-0 mx-auto" src="{% static 'img/services-illustration.svg' %}" alt="Illustration">
-                            {% endif %}
-                        </div>
-                        <div class="col-lg-6 offset-lg-1 col-md-7 text-md-start text-center">
-                            <div class="mx-md-0 mx-auto" style="max-width: 500px;">
-                                <h2 class="mb-md-5 mb-4">What I do best</h2>
-                                <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block mb-4 pb-2">
-                                    {% if portfolio.usp1_image %}
-                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp1_image.url }}" alt="Icon">
-                                    {% endif %}
-                                    <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">{{ portfolio.usp1_title }}</h3>
-                                        <p class="mb-0 fs-sm">{{ portfolio.usp1_description }}</p>
-                                    </div>
-                                </div>
-                                <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block mb-4 pb-2">
-                                    {% if portfolio.usp2_image %}
-                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp2_image.url }}" alt="Icon">
-                                    {% endif %}
-                                    <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">{{ portfolio.usp2_title }}</h3>
-                                        <p class="mb-0 fs-sm">{{ portfolio.usp2_description }}</p>
-                                    </div>
-                                </div>
-                                <!-- Media item (Service)-->
-                                <div class="d-md-flex align-items-start d-block">
-                                    {% if portfolio.usp3_image %}
-                                    <img class="me-md-4 mb-md-0 mb-4" src="{{ portfolio.usp3_image.url }}" alt="Icon">
-                                    {% endif %}
-                                    <div class="ps-md-2">
-                                        <h3 class="h6 mb-2">{{ portfolio.usp3_title }}</h3>
-                                        <p class="mb-0 fs-sm">{{ portfolio.usp3_description }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="shape shape-top shape-curve bg-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
-                        <path fill="currentColor" d="M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z"></path>
-                    </svg>
-                </div>
-            </section>
+
+            <!-- Skills-->
+            {% if portfolio.usp1_title %}
+            {% include 'partials/_services.html' %}
+            {% endif %}
+
+            <!-- Skills-->
+            {% include 'partials/_skills.html' %}
+
             <!-- Portfolio-->
             {% if items %}
             {% include 'partials/_portfolio.html' %}
             {% endif %}
-            {% comment %}
+
             <!-- Testimonials-->
-            <section class="bg-faded-primary position-relative py-md-7 py-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-7 order-md-1 order-2">
-                            <!-- Carousel-->
-                            <div class="tns-carousel-wrapper">
-                                <div class="tns-carousel-inner" data-carousel-options="{&quot;gutter&quot;: 20, &quot;responsive&quot;: {&quot;0&quot;: {&quot;nav&quot;: true, &quot;controls&quot;: false}, &quot;991&quot;: {&quot;nav&quot;: false, &quot;controls&quot;: true}}}">
-                                    <!-- Carousel item-->
-                                    <blockquote class="blockquote mt-3 mb-0">
-                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum facere officia ratione quos esse corporis cum.</p>
-                                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis voluptatum deleniti atque.</p>
-                                        <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/01.jpg' %}" alt="Tim Brooks" width="42">
-                                            <div class="text-heading fs-md fw-medium ps-2 ms-1">Tim Brooks</div>
-                                        </footer>
-                                    </blockquote>
-                                    <!-- Carousel item-->
-                                    <blockquote class="blockquote mt-3 mb-0">
-                                        <p>Consectetur adipisicing elit. Minus facilis asperiores deleniti ipsum quod ipsa voluptate dicta quasi. Dignissimos accusantium temporibus sunt culpa minima, earum reprehenderit aspernatur inventore magnam labore.</p>
-                                        <p>Velit modi neque placeat consequatur voluptatibus odit aut iste dolorum dolorem magnam.</p>
-                                        <footer class="d-flex align-items-center"><img class="rounded-circle" src="{% static 'img/02.jpg' %}" alt="Tim Brooks" width="42">
-                                            <div class="text-heading fs-md fw-medium ps-2 ms-1">Serenity Edwards</div>
-                                        </footer>
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 offset-lg-1 order-md-2 order-1 mb-md-0 mb-grid-gutter"><img class="d-block mx-md-0 mx-auto" src="{% static 'img/testimonials-illustration.svg' %}" alt="Illustration"></div>
-                    </div>
-                </div>
-                <div class="shape shape-bottom shape-curve bg-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
-                        <path fill="currentColor" d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
-                    </svg>
-                </div>
-            </section> {% endcomment %}
-            {% comment %}
-            <!-- Socials-->
-            <section class="position-relative py-6 bg-no-repeat bg-position-center-bottom overflow-hidden" style="background-image: url(img/demo/personal-portfolio/socials/bg-shape.png);">
-                <!-- Parallax-->
-                <div class="parallax">
-                    <div class="parallax-layer" data-depth="0.1"><img src="img/demo/personal-portfolio/socials/figure-1.png" alt="Layer 1"></div>
-                    <div class="parallax-layer" data-depth="0.15"><img src="img/demo/personal-portfolio/socials/figure-2.png" alt="Layer 2"></div>
-                    <div class="parallax-layer" data-depth="0.25"><img src="img/demo/personal-portfolio/socials/figure-3.png" alt="Layer 3"></div>
-                </div>
-                <!-- Content-->
-                <div class="d-flex align-items-center position-absolute w-100 h-100" style="top: 0; left: 0; z-index: 9">
-                    <div class="container">
-                        <h2 class="mb-4 pb-sm-3 text-center">Follow me</h2>
-                        <div class="text-center"><a class="btn btn-lg text-white mb-2 me-sm-4 me-2" href="#" style="background-color: #ea4c89;"><i class="ai-dribbble lead me-2"></i>Dribbble</a><a class="btn btn-lg text-white mb-2" href="#" style="background-color: #1969ff"><i class="ai-behance lead me-2"></i>Behance</a></div>
-                    </div>
-                </div>
-            </section> {% endcomment %}
+            {% if testimonials %}
+            {% include 'partials/_testimonials.html' %}
+            {% endif %}
+
             {% endblock page_content %}
 
             {% block vendor_scripts %}

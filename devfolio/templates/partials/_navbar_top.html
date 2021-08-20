@@ -50,10 +50,12 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-column dropdown-column-img bg-secondary" href="{% url 'portfolio:home' %}" style="background-image: url({% static 'img/portfolio.svg' %}); background-position: center;"></a>
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'portfolio:home' %}">{% translate "Home" %}</a>
+                                                <a class="dropdown-item" href="#" data-scroll>{% translate "Home" %}</a>
+                                                <a class="dropdown-item" href="#services" data-scroll>{% translate "What I Do Best" %}</a>
                                             </div>
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'about' %}">{% translate "About" %}</a>
+                                                <a class="dropdown-item" href="#skills" data-scroll>{% translate "My Skills" %}</a>
+                                                <a class="dropdown-item" href="#portfolio" data-scroll>{% translate "My Projects" %}</a>
                                             </div>
                                         </div>
                                     </li>
