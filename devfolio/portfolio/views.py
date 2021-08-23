@@ -4,9 +4,11 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Portfolio, Project, Tag
 
+# Hard-code the main portfolio (for now)
+portfolio = Portfolio.objects.first()
+
 
 def portfolio_home(request):
-    portfolio = Portfolio.objects.first()
     items = Project.objects.all()
     tags = Tag.objects.all()
     tag_titles = [tag.title.lower() for tag in tags]
@@ -48,6 +50,7 @@ def portfolio_detail(request, id):
         request,
         "portfolio/detail.html",
         {
+            "portfolio": portfolio,
             "navbar_floating": True,
             "project": project,
             "related": related,
