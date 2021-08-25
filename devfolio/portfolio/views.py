@@ -9,7 +9,7 @@ portfolio = Portfolio.objects.first()
 
 
 def portfolio_home(request):
-    items = Project.objects.all()
+    items = Project.objects.all().order_by('-date')
     tags = Tag.objects.all()
     tag_titles = [tag.title.lower() for tag in tags]
     return render(
@@ -31,6 +31,7 @@ def portfolio_list(request):
 def portfolio_detail(request, id):
     project = get_object_or_404(Project, id=id)
     related = Project.objects.exclude(id=id)
+    screenshots = project.screenshot_set.all().order_by('id')
 
     # Prepare URL's for display
     live_url_short = ""
@@ -54,6 +55,7 @@ def portfolio_detail(request, id):
             "navbar_floating": True,
             "project": project,
             "related": related,
+            "screenshots": screenshots,
             "live_url_short": live_url_short,
             "repo_url_short": repo_url_short,
         },
