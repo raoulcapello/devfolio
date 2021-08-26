@@ -5,14 +5,14 @@ from django.urls import include, path
 from django.views import defaults as default_views
 
 urlpatterns = [
-    path("", include("devfolio.portfolio.urls", namespace="home")),
+    # path("", include("devfolio.portfolio.urls", namespace="home")),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("devfolio.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Home-made apps
-    path("portfolio/", include("devfolio.portfolio.urls")),
+    # path("portfolio/", include("devfolio.portfolio.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

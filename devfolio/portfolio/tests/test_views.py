@@ -4,6 +4,7 @@ from pytest_django.asserts import assertTemplateUsed
 
 
 # These are the user stories of our user - let's call her Lauryn.
+@pytest.mark.skip
 @pytest.mark.django_db
 def test_profile_page(client):
     # Lauryn checks out the portfolio page.
