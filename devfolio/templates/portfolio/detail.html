@@ -86,7 +86,10 @@
                                 {% endif %}
                                 {% if screenshots %}
                                 {% for screenshot in screenshots %}
-                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{{ screenshot.screenshot.url }}"><img src="{{ screenshot.screenshot.url }}" alt="{{ screenshot.caption }}"></a>
+                                <a class="gallery-item rounded-3 mb-grid-gutter" href="{{ screenshot.screenshot.url }}">
+                                    <img src="{{ screenshot.screenshot.url }}" alt="{{ screenshot.caption }}">
+                                    <span class="gallery-caption">{{ screenshot.caption }}</span>
+                                </a>
                                 {% endfor %}
                                 {% endif %}
                             </div>
