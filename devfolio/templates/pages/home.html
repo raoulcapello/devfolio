@@ -19,19 +19,23 @@
                         <h1 class="display-4 mb-lg-4 mb-3">{{ portfolio.title|default:"Greeting or Project Title" }}</h1>
                         {% endif %}
                         <h2 class="mb-lg-5 mb-4 text-muted">{{ portfolio.subtitle|default:"Project Subtitle" }}</h2>
+                        <div class="text-nowrap mb-3">
+                            <a class="btn btn-outline-primary" href="#about-me" data-scroll>About Me</a>
+                            <a class="btn btn-outline-primary" href="#skills" data-scroll>Skills</a>
+                            <a class="btn btn-outline-primary" href="#portfolio" data-scroll>Portfolio</a>
+                        </div>
+                        {% if portfolio.resume %}
                         <div class="text-nowrap">
-                            {% if portfolio.resume %}
                             <a class="btn btn-translucent-primary me-3" href="{{ portfolio.resume.url }}" download>
                                 <i class="ai-arrow-down-circle mt-n1 me-2"></i>
                                 Download CV
                             </a>
-                            {% endif %}
-                            <a class="btn btn-outline-primary" href="#portfolio" data-scroll>Portfolio</a>
                         </div>
+                        {% endif %}
                     </div>
-                    <div class="col-lg-8 col-md-7 order-md-2 order-1 mb-md-0 mb-grid-gutter">
+                    <div class="col-lg-8 col-md-7 order-md-2 order-1 mb-md-0 mb-grid-gutter pe-md-7 text-end" style="z-index: -1;">
                         {% if portfolio.featured_image %}
-                        <img src="{{ portfolio.featured_image.url }}" alt="{{ portfolio.title|default:"Project Title" }}">
+                        <img src="{{ portfolio.featured_image.url }}" alt="{{ portfolio.title|default:"Project Title" }}" style="max-height: 500px;" class="rounded-circle">
                         {% else %}
                         <img src="{% static 'img/hero-illustration.svg' %%}" alt="{{ portfolio.title|default:"Project Title" }}">
                         {% endif %}
@@ -41,7 +45,7 @@
 
             <!-- Skills-->
             {% if portfolio.usp1_title %}
-            {% include 'partials/_services.html' %}
+            {% include 'partials/_about_me.html' %}
             {% endif %}
 
             <!-- Skills-->

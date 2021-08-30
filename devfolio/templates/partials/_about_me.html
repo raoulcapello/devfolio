@@ -1,14 +1,14 @@
             {% load static i18n %}
 
             <!-- Services-->
-            <section class="bg-faded-primary position-relative py-md-7 py-5" id="services">
+            <section class="bg-faded-primary position-relative py-md-7 py-5" id="about-me">
                 <div class="container my-2 my-md-0">
                     <div class="row align-items-center">
                         <div class="col-md-5 mb-md-0 mb-5 pb-md-0 pb-3">
                             {% if portfolio.usp_main_image %}
-                            <img class="d-block mx-md-0 mx-auto" src="{{ portfolio.usp_main_image.url }}" alt="Illustration">
+                            <img class="d-none d-md-block rounded-circle mx-md-0 mx-auto" src="{{ portfolio.usp_main_image.url }}" alt="Illustration">
                             {% else %}
-                            <img class="d-block mx-md-0 mx-auto" src="{% static 'img/services-illustration.svg' %}" alt="Illustration">
+                            <img class="d-block mx-md-0 mx-auto" src="{% static 'img/about-me.svg' %}" alt="Illustration">
                             {% endif %}
                         </div>
                         <div class="col-lg-6 offset-lg-1 col-md-7 text-md-start text-center">
