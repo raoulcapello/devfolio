@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>devfolio | {% block title %} A Portfolio Manager for Web Developers & Designers {% endblock title %}</title>
+    <title>{% block title %}{{ portfolio.title }}{% if portfolio.subtitle %} | {{ portfolio.subtitle }}{% endif %}{% endblock title %}</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="An Online Portfolio Management System for Web Developers and Designers.">
-    <meta name="keywords" content="portfolio content management web developer designer">
+    <meta name="description" content="{{ portfolio.title }}{% if portfolio.subtitle %} | {{ portfolio.subtitle }}{% endif %}">
+    <meta name="keywords" content="raoul capello portfolio full-stack django python web developer consultant amsterdam netherlands javascript react docker">
     <meta name="author" content="Raoul Capello">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
