@@ -5,6 +5,15 @@
 dev-build:
 	docker-compose -f dev.yml build
 
+# Note the dev-run command spins up the 'postgres' and 'docs' containers,
+# but you still need to install python packages with:
+#
+# pip install requirements/local.txt
+#
+# And run Django's development web server with:
+#
+# python manage.py runserver_plus
+#
 dev-run:
 	docker-compose -f dev.yml up -d --remove-orphans
 
