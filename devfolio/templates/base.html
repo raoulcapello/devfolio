@@ -35,7 +35,7 @@
     ================================================== -->
     {# Placed at the top of the document so pages load faster with defer #}
     {% block javascript %}
-    <script defer src="{% static 'js/devfolio.js' %}"></script>
+    {% comment %} <script defer src="{% static 'js/devfolio.js' %}"></script> {% endcomment %}
     {% comment %} <script defer src="{% static 'js/page-load-spinner.js' %}"></script> {% endcomment %}
     {% endblock javascript %}
 

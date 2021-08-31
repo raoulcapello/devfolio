@@ -44,10 +44,17 @@
                                     <li class="mb-2">Services:<span class="fw-medium text-nav ms-2">{{ project.services }}</span></li>
                                     {% endif %}
                                     {% if live_url_short %}
+                                    {% if project.live_url_message_modal_text %}
+                                    <li data-bs-toggle="modal" data-bs-target="#messageModal">
+                                        <i class="ai-globe" alt="Live URL"></i>
+                                        <a class="nav-link-style ms-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Check it out live!">{{ live_url_short }}</a>
+                                    </li>
+                                    {% else %}
                                     <li>
                                         <i class="ai-globe" alt="Live URL"></i>
                                         <a class="nav-link-style ms-2" href="{{ project.live_url }}" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check it out live!">{{ live_url_short }}</a>
                                     </li>
+                                    {% endif %}
                                     {% endif %}
                                     {% if repo_url_short %}
                                     <li><i class="ai-github"></i><a class="nav-link-style ms-2" href="{{ project.repo_url }}" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="right" title="Check out the source code!">{{ repo_url_short }}</a></li>
@@ -127,6 +134,12 @@
 
             {% endblock page_content %}
 
+            {% if project.live_url_message_modal_text %}
+            {% block modal %}
+            {% include 'partials/_message_modal.html' %}
+            {% endblock modal %}
+            {% endif %}
+
             {% block vendor_scripts %}
             <script src="{% static 'js/tiny-slider.js' %}"></script>
             <script src="{% static 'js/lightgallery.min.js' %}"></script>
@@ -134,3 +147,17 @@
             <script src="{% static 'js/lg-zoom.min.js' %}"></script>
             <script src="{% static 'js/lg-video.min.js' %}"></script>
             {% endblock vendor_scripts %}
+
+            {% if project.live_url_message_modal_text %}
+            {% block inline_javascript %}
+            <script>
+                // When user closes the modal, open the project demo URL in
+                // a new tab/window (depends on user's browser setting).
+                document.querySelector('#closeModal').addEventListener(
+                    "click", () => {
+                        window.open('{{ project.live_url }}', '_blank');
+                    }
+                );
+            </script>
+            {% endblock inline_javascript %}
+            {% endif %}

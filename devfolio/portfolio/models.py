@@ -96,6 +96,12 @@ class Project(models.Model):
     services = models.CharField(_("Services"), max_length=100, blank=True)
     client_url = models.URLField(_("Client URL"), max_length=200, blank=True)
     live_url = models.URLField(_("Live URL"), max_length=200, blank=True)
+    live_url_message_modal_title = models.CharField(
+        _("Live URL Popup Title"), max_length=50, blank=True
+    )
+    live_url_message_modal_text = models.TextField(
+        _("Live URL Popup Message"), max_length=300, blank=True
+    )
     repo_url = models.URLField(_("Repo URL"), max_length=200, blank=True)
     objective_text = models.TextField(
         _("Objective"), max_length=500, blank=True
