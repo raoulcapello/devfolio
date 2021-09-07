@@ -54,16 +54,16 @@
                                             <a class="dropdown-column dropdown-column-img bg-secondary" href="{% url 'portfolio:home' %}" style="background-image: url({% static 'img/portfolio.svg' %}); background-position: center;"></a>
                                             {% if request.path == home_url %}
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="#" data-scroll>{% translate "Home" %}</a>
-                                                <a class="dropdown-item" href="#about-me" data-scroll>{% translate "What I Do Best" %}</a>
+                                                <a class="dropdown-item" href="#" data-scroll>Home</a>
+                                                <a class="dropdown-item" href="#about-me" data-scroll>What I Do Best</a>
                                             </div>
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="#skills" data-scroll>{% translate "My Skills" %}</a>
-                                                <a class="dropdown-item" href="#portfolio" data-scroll>{% translate "My Projects" %}</a>
+                                                <a class="dropdown-item" href="#skills" data-scroll>My Skills</a>
+                                                <a class="dropdown-item" href="#portfolio" data-scroll>My Projects</a>
                                             </div>
                                             {% else %}
                                             <div class="dropdown-column">
-                                                <a class="dropdown-item" href="{% url 'portfolio:home' %}" data-scroll>{% translate "Home" %}</a>
+                                                <a class="dropdown-item" href="{% url 'portfolio:home' %}" data-scroll>Home</a>
                                             </div>
                                             {% endif %}
                                         </div>
