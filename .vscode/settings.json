@@ -8,7 +8,7 @@
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": [
     "--load-plugins=pylint_django",
-    "--django-settings-module=devfolio.config.settings.local"
+    "--django-settings-module=config.settings.local"
   ],
   // Flake8
   "python.linting.flake8Enabled": true,
