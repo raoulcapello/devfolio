@@ -1,9 +1,15 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic.base import TemplateView
+
+from devfolio.portfolio.sitemaps import ProjectSitemap
+
+# A dictionary of sitemaps
+sitemaps = {'projects': ProjectSitemap}
 
 urlpatterns = [
     path("", include("devfolio.portfolio.urls", namespace="home")),
@@ -19,6 +25,12 @@ urlpatterns = [
         TemplateView.as_view(
             template_name="pages/robots.txt", content_type="text/plain"
         ),
+    ),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {'sitemaps': sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -66,6 +66,8 @@ class Portfolio(models.Model):
     usp3_image = models.FileField(
         _("Unique Selling Point 3 - Image"), upload_to="images", blank=True
     )
+    # created = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         """Meta definition for Portfolio."""
@@ -79,7 +81,7 @@ class Portfolio(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Portfolio."""
-        return reverse("home")
+        return reverse("portfolio:home")
 
 
 class Project(models.Model):
@@ -114,6 +116,8 @@ class Project(models.Model):
     )
     share_fb = models.BooleanField(_("Share on FaceBook"), default=False)
     share_twitter = models.BooleanField(_("Share on Twitter"), default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         """Meta definition for Project."""
