@@ -2,14 +2,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
 from django.views import defaults as default_views
-from django.views.generic.base import TemplateView
+from django.views.generic.base import RedirectView, TemplateView
 
 from devfolio.portfolio.sitemaps import ProjectSitemap
 
 # A dictionary of sitemaps
-sitemaps = {'projects': ProjectSitemap}
+sitemaps = {"projects": ProjectSitemap}
 
 urlpatterns = [
     path("", include("devfolio.portfolio.urls", namespace="home")),
@@ -29,8 +30,14 @@ urlpatterns = [
     path(
         "sitemap.xml",
         sitemap,
-        {'sitemaps': sitemaps},
+        {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
+    ),
+    path(
+        "favicon.ico",
+        RedirectView.as_view(
+            url=staticfiles_storage.url("img/favicons/favicon.ico")
+        ),
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
