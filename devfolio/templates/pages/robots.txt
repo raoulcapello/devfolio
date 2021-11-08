@@ -1,3 +1,10 @@
 User-Agent: *
 
-Disallow:
+Disallow: /atom.xml
+Disallow: /sitemap.txt
+Disallow: /sitemaps.xml
+Disallow: /sitemap.xml.gz
+Disallow: /sitemap_index.xml
+Disallow: /wp-login.php
+
+Sitemap: https://www.raoulcapello.com/sitemap.xml
