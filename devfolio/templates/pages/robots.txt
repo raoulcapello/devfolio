@@ -6,5 +6,6 @@ Disallow: /sitemaps.xml
 Disallow: /sitemap.xml.gz
 Disallow: /sitemap_index.xml
 Disallow: /wp-login.php
+Disallow: /dashboard
 
 Sitemap: https://www.raoulcapello.com/sitemap.xml
